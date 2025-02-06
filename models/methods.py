@@ -26,7 +26,6 @@ methods_registry = ClassRegistry()
 class FSEFull(nn.Module):
     def __init__(self,
                  device="cuda:0",
-                 paths=DefaultPaths,
                  checkpoint_path=None,
                  inverter_pth=None):
         super(FSEFull, self).__init__()
@@ -35,7 +34,7 @@ class FSEFull(nn.Module):
             "checkpoint_path": checkpoint_path,
             "stylegan_size": 1024
         }
-        self.opts.update(paths)
+        self.opts.update(DefaultPaths)
         self.opts = Namespace(**self.opts)
 
         self.device = device
@@ -152,7 +151,6 @@ class FSEFull(nn.Module):
 class FSEInverter(nn.Module):
     def __init__(self,
                  device="cuda:0",
-                 paths=DefaultPaths,
                  checkpoint_path=None):
         super(FSEInverter, self).__init__()
         self.opts = {
@@ -160,7 +158,7 @@ class FSEInverter(nn.Module):
             "checkpoint_path": checkpoint_path,
             "stylegan_size": 1024
         }
-        self.opts.update(paths)
+        self.opts.update(DefaultPaths)
         self.opts = Namespace(**self.opts)
 
         self.device = device
